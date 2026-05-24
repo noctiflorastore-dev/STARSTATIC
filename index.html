@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>STARSTATIC — Too Iconic To Ignore.</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--bg:#050505;
+--card:#0f0f0f;
+--text:#f5f5f5;
+--muted:#999;
+--pink:#ff1e8a;
+--purple:#8c52ff;
+--chrome:#d9d9d9;
+--border:rgba(255,255,255,.08);
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:radial-gradient(circle at top,#1b0b18 0%,#050505 45%);
+color:var(--text);
+overflow-x:hidden;
+}
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:1000;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:22px 42px;
+background:rgba(0,0,0,.55);
+backdrop-filter:blur(14px);
+border-bottom:1px solid var(--border);
+}
+
+.logo{
+font-family:'Orbitron',sans-serif;
+font-size:1.6rem;
+font-weight:900;
+letter-spacing:.15em;
+background:linear-gradient(90deg,var(--pink),white);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+nav{
+display:flex;
+gap:28px;
+}
+
+nav a{
+color:#cfcfcf;
+text-decoration:none;
+font-size:.95rem;
+transition:.3s;
+}
+
+nav a:hover{
+color:white;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:120px 8% 80px;
+position:relative;
+overflow:hidden;
+}
+
+.glow{
+position:absolute;
+width:500px;
+height:500px;
+background:radial-gradient(circle,var(--pink),transparent 70%);
+filter:blur(120px);
+opacity:.18;
+top:-100px;
+right:-100px;
+}
+
+.glow2{
+position:absolute;
+width:500px;
+height:500px;
+background:radial-gradient(circle,var(--purple),transparent 70%);
+filter:blur(140px);
+opacity:.18;
+bottom:-150px;
+left:-100px;
+}
+
+.hero-inner{
+max-width:1300px;
+width:100%;
+display:grid;
+grid-template-columns:1.1fr .9fr;
+gap:70px;
+align-items:center;
+z-index:2;
+}
+
+.hero-text h1{
+font-family:'Orbitron',sans-serif;
+font-size:clamp(3.5rem,9vw,7rem);
+line-height:.92;
+letter-spacing:.03em;
+}
+
+.hero-text h1 span{
+background:linear-gradient(90deg,var(--pink),var(--purple));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero-text p{
+margin-top:30px;
+max-width:620px;
+font-size:1.08rem;
+line-height:1.9;
+color:var(--muted);
+}
+
+.hero-btns{
+display:flex;
+gap:18px;
+margin-top:40px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:15px 28px;
+border-radius:999px;
+text-decoration:none;
+font-weight:700;
+transition:.3s;
+}
+
+.primary{
+background:linear-gradient(135deg,var(--pink),var(--purple));
+color:white;
+box-shadow:0 10px 35px rgba(255,30,138,.3);
+}
+
+.secondary{
+border:1px solid var(--border);
+background:rgba(255,255,255,.04);
+color:white;
+}
+
+.btn:hover{
+transform:translateY(-4px);
+}
+
+.hero-cards{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:22px;
+}
+
+.card{
+background:linear-gradient(180deg,#141414,#0a0a0a);
+border:1px solid var(--border);
+border-radius:30px;
+padding:24px;
+min-height:240px;
+position:relative;
+overflow:hidden;
+}
+
+.card::before{
+content:'';
+position:absolute;
+inset:0;
+background:linear-gradient(135deg,rgba(255,30,138,.08),rgba(140,82,255,.08));
+}
+
+.card:nth-child(1){
+transform:translateY(-30px);
+}
+
+.card:nth-child(3){
+transform:translateY(30px);
+}
+
+.card h3{
+font-family:'Orbitron',sans-serif;
+font-size:1.2rem;
+position:relative;
+z-index:2;
+}
+
+.card p{
+margin-top:16px;
+line-height:1.8;
+color:#b7b7b7;
+position:relative;
+z-index:2;
+}
+
+.icon{
+font-size:2.2rem;
+margin-bottom:20px;
+position:relative;
+z-index:2;
+}
+
+.banner{
+width:90%;
+margin:auto;
+padding:18px;
+border-radius:22px;
+text-align:center;
+background:linear-gradient(90deg,var(--purple),var(--pink));
+font-weight:800;
+letter-spacing:.08em;
+box-shadow:0 15px 40px rgba(255,30,138,.25);
+}
+
+.section{
+max-width:1300px;
+margin:auto;
+padding:110px 24px;
+}
+
+.section-title{
+text-align:center;
+}
+
+.section-title h2{
+font-family:'Orbitron',sans-serif;
+font-size:3rem;
+}
+
+.section-title p{
+margin-top:16px;
+color:var(--muted);
+}
+
+.products{
+margin-top:60px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.product{
+background:linear-gradient(180deg,#121212,#090909);
+border:1px solid var(--border);
+border-radius:30px;
+padding:28px;
+position:relative;
+overflow:hidden;
+transition:.35s;
+}
+
+.product:hover{
+transform:translateY(-10px);
+box-shadow:0 25px 60px rgba(0,0,0,.5);
+}
+
+.tag{
+display:inline-block;
+padding:8px 14px;
+border-radius:999px;
+font-size:.75rem;
+font-weight:700;
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.product h3{
+font-family:'Orbitron',sans-serif;
+font-size:1.7rem;
+margin-top:24px;
+}
+
+.product p{
+margin-top:16px;
+line-height:1.8;
+color:#b5b5b5;
+}
+
+.price{
+margin-top:28px;
+font-size:1.8rem;
+font-weight:800;
+}
+
+.old{
+text-decoration:line-through;
+font-size:1rem;
+margin-left:10px;
+color:#888;
+}
+
+.buy{
+margin-top:28px;
+display:inline-block;
+padding:14px 20px;
+border-radius:999px;
+background:linear-gradient(135deg,var(--pink),var(--purple));
+color:white;
+text-decoration:none;
+font-weight:700;
+}
+
+.about{
+text-align:center;
+background:#090909;
+border-top:1px solid var(--border);
+border-bottom:1px solid var(--border);
+}
+
+.about h2{
+font-family:'Orbitron',sans-serif;
+font-size:2.7rem;
+}
+
+.about p{
+margin:24px auto 0;
+max-width:850px;
+line-height:1.9;
+color:var(--muted);
+}
+
+footer{
+padding:40px 20px;
+text-align:center;
+color:#888;
+}
+
+@media(max-width:950px){
+
+.hero-inner{
+grid-template-columns:1fr;
+}
+
+.hero-cards{
+grid-template-columns:1fr 1fr;
+}
+
+header{
+padding:20px;
+}
+
+nav{
+display:none;
+}
+
+}
+
+@media(max-width:650px){
+
+.hero-cards{
+grid-template-columns:1fr;
+}
+
+.hero{
+padding-top:140px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+STARSTATIC
+</div>
+
+<nav>
+<a href="#shop">Shop</a>
+<a href="#about">About</a>
+<a href="https://wa.me/919737636109">Contact</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="glow"></div>
+<div class="glow2"></div>
+
+<div class="hero-inner">
+
+<div class="hero-text">
+
+<h1>
+TOO ICONIC<br>
+<span>TO IGNORE.</span>
+</h1>
+
+<p>
+Accessories inspired by pop royalty, concert lights, paparazzi chaos,
+late-night music videos, and main-character energy.
+Built for dramatic outfits and unforgettable entrances.
+</p>
+
+<div class="hero-btns">
+
+<a href="#shop" class="btn primary">
+ENTER THE DROP
+</a>
+
+<a href="https://wa.me/919737636109" class="btn secondary">
+CONTACT
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-cards">
+
+<div class="card">
+<div class="icon">⚡</div>
+<h3>POPSTAR ENERGY</h3>
+<p>
+Fashion accessories designed like iconic stage moments and headline-worthy looks.
+</p>
+</div>
+
+<div class="card">
+<div class="icon">💿</div>
+<h3>Y2K GLAM</h3>
+<p>
+Chrome aesthetics, neon flashes, glossy chaos, and internet-era confidence.
+</p>
+</div>
+
+<div class="card">
+<div class="icon">🕶️</div>
+<h3>MAIN CHARACTER</h3>
+<p>
+Built for dramatic entrances, mirror selfies, parties, and after-dark fits.
+</p>
+</div>
+
+<div class="card">
+<div class="icon">🎤</div>
+<h3>ICON STATUS</h3>
+<p>
+Every collection feels like a world tour, a music video, and a fashion statement.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="banner">
+⚡ FREE SHIPPING PAN INDIA ⚡
+</div>
+
+<section class="section" id="shop">
+
+<div class="section-title">
+
+<h2>THE DROP</h2>
+
+<p>
+Curated accessories for pop-culture addicts and future icons.
+</p>
+
+</div>
+
+<div class="products">
+
+<div class="product">
+
+<div class="tag">
+LIMITED DROP
+</div>
+
+<h3>CHROME CHAOS</h3>
+
+<p>
+Statement accessories inspired by paparazzi flashes,
+dance-floor energy, and futuristic glam aesthetics.
+</p>
+
+<div class="price">
+₹499
+<span class="old">₹699</span>
+</div>
+
+<a class="buy" href="https://wa.me/919737636109?text=Hi%20I%20want%20to%20order%20CHROME%20CHAOS">
+BUY NOW
+</a>
+
+</div>
+
+<div class="product">
+
+<div class="tag">
+NEW ERA
+</div>
+
+<h3>STATIC HEART</h3>
+
+<p>
+Dark-pop accessories with chrome tones,
+celebrity chaos, and iconic-night-out energy.
+</p>
+
+<div class="price">
+₹549
+<span class="old">₹749</span>
+</div>
+
+<a class="buy" href="https://wa.me/919737636109?text=Hi%20I%20want%20to%20order%20STATIC%20HEART">
+BUY NOW
+</a>
+
+</div>
+
+<div class="product">
+
+<div class="tag">
+TRENDING
+</div>
+
+<h3>MOONSTAGE</h3>
+
+<p>
+Performance-inspired statement styling designed for confidence,
+flash photography, and dramatic outfits.
+</p>
+
+<div class="price">
+₹449
+<span class="old">₹649</span>
+</div>
+
+<a class="buy" href="https://wa.me/919737636109?text=Hi%20I%20want%20to%20order%20MOONSTAGE">
+BUY NOW
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section about" id="about">
+
+<h2>
+ABOUT STARSTATIC
+</h2>
+
+<p>
+STARSTATIC blends pop-culture nostalgia, futuristic glam,
+concert-tour aesthetics, and dramatic fashion energy into one universe.
+Inspired by iconic performances, celebrity chaos, and internet-era confidence.
+</p>
+
+</section>
+
+<footer>
+© 2026 STARSTATIC · TOO ICONIC TO IGNORE.
+</footer>
+
+</body>
+</html>
